@@ -1,0 +1,26 @@
+services:
+  dbt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_dbt
+    volumes:
+      - ./dbt:/dbt
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: test_user
+      DB_PASSWORD: test_pass
+      DB_NAME: dbt_dev
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_pass
+      POSTGRES_DB: dbt_dev
+    ports:
+      - "5432:5432"
