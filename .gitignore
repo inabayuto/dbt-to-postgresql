@@ -1,7 +1,10 @@
 # dbt-to-postgresql .gitignore
 
-# Markdown files (記事ファイル)
-*.md
+# Markdown files (記事ファイル) - README.mdは除外しない
+dbt-git-trocco.md
+what is-dbt.md
+dbt-article.md
+writing-style.md
 
 # dbt specific
 target/
